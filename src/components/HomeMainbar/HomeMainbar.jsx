@@ -3,6 +3,7 @@ import { useLocation, useNavigate} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import './HomeMainbar.css'
 import QuestionsList from './QuestionsList'
+
 const Homemainbar = () => {
   // var questionsList = [{
   //   _id:1,
@@ -58,19 +59,30 @@ const Homemainbar = () => {
   const questionsList = useSelector(state => state.questionReducer)
   // console.log(questionsList)
   const location =useLocation();
-  const user=1;
+  const currentUser = useSelector(state => state.currentUserReducer)
     const navigate = useNavigate();
     const redirect = () => {
         alert('Login or Signup to ask a question?');
         navigate('/Auth');
     }
+    // const checkAuth = () => {
+    //   if (user === null){
+    //     redirect();
+    //   }
+    //   else{
+    //     navigate('/User/SendOtp')
+    //   }
+    //     // navigate('/AskQuestion')
+    // }
     const checkAuth = () => {
-      if (user === null){
-        redirect();
+      // console.log(currentUser)
+      if (currentUser === null){
+            redirect();
       }
-      else
-        navigate('/AskQuestion')
-    }
+      else{
+        navigate('/SendOtp')
+      }
+  }
   return (
     <div className='main-bar'>
       <div className='main-bar-header'>

@@ -6,6 +6,7 @@ import { fetchAllQuestions } from './actions/question';
 import Navbar from './components/Navbar/Navbar';
 import AllRoutes from './AllRoutes';
 import { fetchAllUsers } from './actions/users';
+import { Chatbot } from './components/Chatbot/Chatbot';
 function App() {
   const dispatch = useDispatch()
 
@@ -19,6 +20,7 @@ function App() {
       <BrowserRouter>
         <Navbar/>
         <AllRoutes/>
+        <Chatbot/>
       </BrowserRouter>
       
     </div>

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({baseURL:'https://stack-overflow-server-oze7.onrender.com'})
+const API = axios.create({baseURL:'http://localhost:5000/'})
 
 API.interceptors.request.use((req) => {
     if (localStorage.getItem('Profile')){
@@ -27,3 +27,7 @@ export const voteQuestion = (id, value, userId) => API.patch(`/questions/vote/${
 export const fetchAllUsers = () => API.get('/user/getAllUsers')
 
 export const updateProfile = (id, updateData) => API.patch(`/user/update/${id}`, updateData)
+
+export const userVerify = (_id,email,otp) => API.post('/questions/verifyotp',{_id,email,otp})
+
+export const sendOtpFunction = (_id,email) => API.post('/questions/sendotp',{_id,email})
