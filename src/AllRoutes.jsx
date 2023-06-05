@@ -10,7 +10,8 @@ import Users from './pages/Users/Users'
 import UserProfile from './pages/UserProfile/UserProfile'
 import Otp from './pages/Otp/Otp'
 import SendOtp from './pages/Otp/sendOtp'
-
+import Premium from './pages/Premium/premium'
+import Social from './pages/social/social'
 const AllRoutes = () => {
   return (
     <Routes>
@@ -24,6 +25,8 @@ const AllRoutes = () => {
         <Route path='/Tags' element={<Tags />} />
         <Route path='/Users' element={<Users />} />
         <Route path='/Users/:id' element={<UserProfile/>} />
+        <Route path='/Payment' element={<Premium/>} />
+        <Route path='/Social' element={<Social/>} />
     </Routes>
   )
 }

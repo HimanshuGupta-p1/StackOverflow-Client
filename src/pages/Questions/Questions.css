@@ -1,53 +1,44 @@
-.question-details-page{
+.question-details-page {
     width: calc(100% - 300px - 24px);
     float: left;
     margin: 25px 0px;
     padding: 0px;
-}
-
-.question-details-container{
+  }
+  .question-details-container {
     margin-bottom: 20px;
     padding-bottom: 20px;
-    border-bottom: solid 1px rgba(0,0,0, 0.112);
-}
-
-.question-details-container-2{
+    border-bottom: solid 1px rgba(0, 0, 0, 0.112);
+  }
+  .question-details-container-2 {
     display: flex;
-}
-
-.question-votes{
+  }
+  .question-votes {
     padding: 5px 20px 5px 10px;
-}
-
-.question-votes p{
-    margin:0%;
+  }
+  .question-votes p {
+    margin: 0%;
     font-size: 25px;
     text-align: center;
-}
-
-.votes-icon{
+  }
+  .votes-icon {
     font-size: 40px;
     cursor: pointer;
     color: rgb(206, 203, 203);
-}
-
-.votes-icon:active{
+  }
+  .votes-icon:active {
     color: #ef8236;
-}
-
-.question-details-container .question-body{
+  }
+  .question-details-container .question-body {
     line-height: 22px;
     white-space: pre-line;
-}
-
-.question-details-container .question-details-tags{
+  }
+  .question-details-container .question-details-tags {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-}
-
-.question-details-container .question-details-tags p,
-.post-ans-container p .ans-tags{
+  }
+  .question-details-container .question-details-tags p,
+  .post-ans-container p .ans-tags {
     padding: 5px 5px;
     margin: 3px;
     font-size: 13px;
@@ -56,16 +47,15 @@
     color: #39739d;
     text-decoration: none;
     line-height: 22px;
-}
-
-.question-actions-user{
+  }
+  .question-actions-user {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.question-actions-user button, .edit-question-btn{
+  }
+  .question-actions-user button,
+  .edit-question-btn {
     background-color: transparent;
     border: none;
     padding: 5px 0px;
@@ -75,37 +65,31 @@
     cursor: pointer;
     font-size: 14px;
     transition: 0.3s;
-}
-
-.question-actions-user button:active{
-    border-bottom: solid 1px black;
-}
-
-.question-actions-user div:nth-child(2) p,
-.question-actions-user div:nth-child(2) .user-link{
+  }
+  .question-actions-user button:active {
+    border-bottom: solid 2px black;
+  }
+  .question-actions-user div:nth-child(2) p,
+  .question-actions-user div:nth-child(2) .user-link {
     text-decoration: none;
     font-size: 14px;
     margin: 0%;
-}
-
-.user-link{
+  }
+  .user-link {
     display: flex;
     align-items: center;
-}
-
-.user-link div{
+  }
+  .user-link div {
     padding-left: 10px;
-}
-
-.post-ans-container form textarea{
+  }
+  .post-ans-container form textarea {
     padding: 10px;
-    border: solid 1px rgba(0,0,0, 0.3);
-    font-family: 'Roboto', sans-serif;
+    border: solid 1px rgba(0, 0, 0, 0.3);
+    font-family: "Roboto", sans-serif;
     width: calc(100% - 20px);
     resize: vertical;
-}
-
-.post-ans-container form .post-ans-btn{
+  }
+  .post-ans-container form .post-ans-btn {
     margin: 20px 0px;
     padding: 10px 10px;
     background-color: #009dff;
@@ -114,19 +98,49 @@
     border-radius: 4px;
     cursor: pointer;
     transition: 0.5s all;
-}
-
-.post-ans-container form .post-ans-btn:hover{
+  }
+  .post-ans-container form .post-ans-btn:hover {
     background-color: #0086d8;
-}
-
-.display-ans{
+  }
+  .display-ans {
     padding-bottom: 20px;
-    border-bottom: solid 1px rgba(0,0,0, 0.112);
-}
-
-.display-ans p{
+    border-bottom: solid 1px rgba(0, 0, 0, 0.112);
+  }
+  .display-ans p {
     font-size: 14px;
     line-height: 18px;
     white-space: pre-line;
-}
+  }
+  @media (min-width: 320px) {
+  }
+  @media (min-width: 375px) {
+  }
+  @media (min-width: 576px) {
+  }
+  @media (max-width: 576px) {
+  }
+  @media (max-width: 426px) {
+    .post-ans-container form,
+    .post-ans-container textarea,
+    .post-ans-container input {
+      display: initial;
+    }
+  }
+  @media (max-width: 576px) {
+    .post-ans-container form,
+    .post-ans-container textarea,
+    .post-ans-container input {
+      display: initial;
+    }
+  }
+  @media (max-width: 768px) {
+    .question-details-page {
+      width: 100%;
+    }
+  }
+  @media (width: 1024px) {
+  }
+  @media (max-width: 1200px) {
+  }
+  @media (max-width: 1400px) {
+  }

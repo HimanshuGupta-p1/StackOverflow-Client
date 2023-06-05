@@ -4,17 +4,54 @@ import {useNavigate} from 'react-router-dom'
 import './AskQuestion.css'
 import {askQuestion} from '../../actions/question'
 const AskQuestion = () => {
+    const currentUser = useSelector((state) => (state.currentUserReducer) )
+    const id = currentUser?.result?._id
+    const users = useSelector((state) => (state.userReducer))
+    const user = users.filter((User) => User._id === id)[0]
     const [questionTitle, setQuestionTitle] = useState('')
     const [questionBody, setQuestionBody] = useState('')
     const [questionTags, setQuestionTags] = useState('')
+    const [noOfQue, setnoOfQues] = useState(user?.noOfQues)
+    const dateAsk = new Date(user?.dateAsked).getDate()
     const dispatch = useDispatch()
-    const user = useSelector((state) => (state.currentUserReducer))
     const navigate = useNavigate()
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        // console.log({questionTitle, questionBody, questionTags})
-        dispatch(askQuestion({questionTitle, questionBody, questionTags, userPosted: user.result.name, userId: user?.result._id}, navigate))
+        var date = new Date(Date.now());
+        console.log(id)
+        console.log(noOfQue)
+        console.log(dateAsk, noOfQue,date.getDate() - dateAsk)
+        if (user?.accountType === 'free'){
+            if (noOfQue > 0  && (date.getDate() - dateAsk) < 1){
+                alert('Your daily limit to ask question exceeds')
+                navigate('/')
+            }
+            else{
+                console.log('f')
+                dispatch(askQuestion({questionTitle, questionBody, questionTags, userPosted: user?.name, userId: user?._id, noOfQues: 1 , dateAsked: date}, navigate))
+            }
+        }
+        else if (user?.accountType === 'silver'){
+            if (noOfQue >= 4  && (date.getDate() - dateAsk) === 0){
+                alert('Your daily limit to ask question exceeds')
+                navigate('/')
+            }
+            else if (noOfQue < 4 && (date.getDate() - dateAsk) === 0){
+                console.log('s4')
+                setnoOfQues(noOfQue + 1)
+                dispatch(askQuestion({questionTitle, questionBody, questionTags, userPosted: user?.name, userId: user?._id, noOfQues: user?.noOfQues + 1 , dateAsked: user?.dateAsked}, navigate))
+            }
+            else{
+                console.log('s1')
+                dispatch(askQuestion({questionTitle, questionBody, questionTags, userPosted: user?.name, userId: user?._id, noOfQues: 1 , dateAsked: date}, navigate))
+            }
+        }
+        else{
+            console.log('g')
+            dispatch(askQuestion({questionTitle, questionBody, questionTags, userPosted: user?.name, userId: user?._id, noOfQues: 1 , dateAsked: date}, navigate))
+        }
+        console.log(user?.dateAsked)
     }
 
     const handleEnter = (e) => {
@@ -27,7 +64,7 @@ const AskQuestion = () => {
             <div className="ask-ques-container">
                 <h1> Ask a Public Question </h1>
                 
-                <form onSubmit={handleSubmit}>
+                <form className = 'askquesform' onSubmit={handleSubmit}>
                     <div className="ask-form-container">
                         <label htmlFor='ask-ques-title'>
                             <h4>Title</h4>

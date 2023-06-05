@@ -1,0 +1,25 @@
+.premium{
+    margin-top:50px;
+    display:flex;
+    justify-items: center;
+}
+.premium img{
+    width: 200px;
+    height: 200px;
+}
+
+.premium button{
+    padding:7px 13px;
+    border: solid 1px blue;
+    border-radius:3px;
+    background-color: #e7f8fe;
+    cursor: pointer;
+}
+
+
+
+@media screen and (max-width:660px) {
+    .premium{
+        display: block;
+    }
+}

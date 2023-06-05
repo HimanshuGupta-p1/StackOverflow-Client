@@ -23,7 +23,7 @@ const Navbar = () => {
         const token = user?.token
         if (token){
             const decodedToken = decode(token)
-            if (decodedToken.exp = 1000 < new Date().getTime()){
+            if (decodedToken.exp === (1000 < new Date().getTime())){
                 handleLogOut();
             }
         }
@@ -33,13 +33,16 @@ const Navbar = () => {
     return (
         <nav className='main-nav'>
             <div className="navbar">
-                <Link to='/' className='nav-item nav-logo'>
+                <Link to='/' className='nav-item nav-btn'>
                     <img src={logo} alt='logo' />
                 </Link>
-                <Link to='/' className='nav-item nav-btn'> About</Link>
-                <Link to='/' className='nav-item nav-btn'>Products</Link>
-                <Link to='/' className='nav-item nav-btn'>For Teams</Link>
-
+                <Link to='/' className='nav-item mid-nav-item nav-btn'> About</Link>
+                {user == null ? <Link to='/Auth' className='nav-item mid-nav-item nav-btn'>Products</Link>:
+                <Link to='/Payment' className='nav-item mid-nav-item nav-btn'>Products</Link>
+                }
+                {user == null ? <Link to='/Auth' className='nav-item mid-nav-item nav-btn'>For Teams</Link>:
+                <Link to='/Social' className='nav-item mid-nav-item nav-btn'>For Teams</Link>
+                }
                 <form>
                     <input type='text' placeholder='Seacrh...' />
                     <img src={search} alt='search' width="18" className='search-icon'/>
@@ -49,6 +52,7 @@ const Navbar = () => {
                     : <>
                     <Avatar backgroundColor='#009dff' px="10px" py="7px" borderRadius="50%" color="white"><Link to={`/Users/${user?.result?._id}`} className='' style={{color:"white", textDecoration:"none"}}>{user.result.name.charAt(0).toUpperCase()}</Link></Avatar>
                     <button className='nav-item nav-links' onClick={handleLogOut}> Log Out</button>
+                    <Link to='/Payment' className='nav-item nav-links'>Get Premium </Link>
                     </>
                 }
 

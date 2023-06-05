@@ -1,6 +1,9 @@
 import React from 'react'
+// import { useState } from 'react'
 
 const ProfileBio = ({currentProfile}) => {
+  // const [noOfQue, setnoOfQues] = useState(currentProfile?.noOfQues)
+  //   const dateAsk = new Date(currentProfile?.dateAsked).toDateString()
   return (
     <div>
       <div>

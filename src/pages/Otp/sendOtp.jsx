@@ -34,12 +34,12 @@ const SendOtp = () => {
         }
     }
   return (
-    <>
+    <>  
             <section>
                 <div className="form_data">
                     <form>
                         <div className="form_input">
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email"><h2>Email ID</h2></label>
                             <input type="email" name="email" id="" onChange={(e) => setEmail(e.target.value)} placeholder='Enter Your Email Address' />
                         </div>
                         <button className='btn' onClick={sendotp}> Authenticate

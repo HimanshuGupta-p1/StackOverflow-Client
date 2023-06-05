@@ -1,8 +1,12 @@
 import * as api from '../api'
+import { setCurrentUser } from './currentUser'
+import { updateUser } from './users'
 export const askQuestion = (questionData, navigate) => async (dispatch) => {
   try{
     const {data} = await api.postQuestion(questionData)
     dispatch({ type: "POST_QUESTION", payload: data})
+    const {noOfQues, dateAsked} = questionData
+    dispatch(updateUser(questionData.userId,{noOfQues, dateAsked}))
     dispatch(fetchAllQuestions())
     navigate('/')
   } catch (error){
@@ -52,49 +56,7 @@ export const deleteAnswer = (id, answerId, noOfAnswers) => async (dispatch) => {
 
 export const voteQuestion = (id, value, userId) => async(dispatch) => {
   try{
-    const {data} = await api.voteQuestion(id, value, userId)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+    const {data} = await api.voteQuestion(id, value, userId)    
     dispatch(fetchAllQuestions())
   }
   catch (error) {
